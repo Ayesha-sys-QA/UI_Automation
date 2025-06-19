@@ -16,9 +16,9 @@ UI_Automation/
 └── test/
 └── java/
 └── tests/
-├── DragAndDropTest.java
-├── ScreenshotTest1.java
-└── ScreenshotTest2.java
+├── DragSales.java
+├── ScreenshotDemo.java
+└── HRMtest.java
 
 ## 🚀 How to Run
 
