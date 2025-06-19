@@ -11,14 +11,8 @@ This project showcases sample UI automation tests using **Java** and **Selenium 
 - Git & GitHub
 
 ## 📁 Project Structure
-UI_Automation/
-└── src/
-└── test/
-└── java/
-└── tests/
-├── DragSales.java
-├── ScreenshotDemo.java
-└── HRMtest.java
+
+<pre> UI_Automation/ └── src/ └── test/ └── java/ └── tests/ ├── DragAndDropTest.java ├── ScreenshotTest1.java └── ScreenshotTest2.java </pre>
 
 ## 🚀 How to Run
 
