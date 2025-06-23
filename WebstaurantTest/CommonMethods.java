@@ -1,7 +1,7 @@
 package com.neotech.utils;
 
 
-	import java.io.File;
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
@@ -241,7 +241,9 @@ import com.google.common.io.Files;
 		 * @return
 		 */
 		
-		//added by Elion
+		/**
+  		* added by Elion
+    		*
 		public static WebElement waitForVisibility(WebElement element) {
 			return getWaitObject().until(ExpectedConditions.visibilityOf(element));
 		}
