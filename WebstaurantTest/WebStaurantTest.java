@@ -40,7 +40,7 @@ public class WebStaurantTest extends CommonMethods {
              }
          }
 
-         // Cliquer sur le dernier produit
+         // click last Product
 		
 		 js.executeScript("arguments[0].scrollIntoView(true);", page.lastProduct);
 		 waitForVisibility(page.lastProduct);
