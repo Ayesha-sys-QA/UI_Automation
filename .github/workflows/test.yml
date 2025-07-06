@@ -1,43 +1,35 @@
-name: Run TestNG UI Tests
+name: test
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Post Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+    - name: Post Set up Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '17'
 
-      - name: Download Selenium JARs
-        run: |
-          mkdir libs
-          wget https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-java/4.8.0/selenium-java-4.8.0.jar -P libs
-          wget https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-api/4.8.0/selenium-api-4.8.0.jar -P libs
-          wget https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-chrome-driver/4.8.0/selenium-chrome-driver-4.8.0.jar -P libs
-          wget https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-remote-driver/4.8.0/selenium-remote-driver-4.8.0.jar -P libs
-          wget https://repo1.maven.org/maven2/org/testng/testng/7.9.0/testng-7.9.0.jar -P libs
+    - name: Clean workspace (remove DragSales.java if present)
+      run: |
+        echo "Cleaning workspace..."
+        rm -f src/test/java/DragSales.java || true
 
-      - name: Compile Java files
-        run: |
-          mkdir bin
-          javac -cp "libs/*" -d bin $(find . -name "*.java")
+    - name: Compile Java files
+      run: |
+        javac -cp "lib/*" -d out $(find . -name "*.java")
 
-      - name: Run TestNG
-        run: |
-          java -cp "bin:libs/*" org.testng.TestNG src/test/java/testng/testng.xml
+    - name: Run TestNG
+      run: |
+        java -cp "lib/*:out" org.testng.TestNG src/test/java/testng/testng.xml
 
-
-      - name: Lancer les tests TestNG
-        run: |
-          wget https://repo1.maven.org/maven2/org/testng/testng/7.9.0/testng-7.9.0.jar
-          java -cp "bin:testng-7.9.0.jar" org.testng.TestNG src/test/java/testng/testng.xml
