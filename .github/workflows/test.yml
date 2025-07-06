@@ -9,19 +9,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Récupérer le code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Installer Java
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Compiler le code Java
+      - name: Download Selenium JARs
+        run: |
+          mkdir libs
+          wget https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-java/4.8.0/selenium-java-4.8.0.jar -P libs
+          wget https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-api/4.8.0/selenium-api-4.8.0.jar -P libs
+          wget https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-chrome-driver/4.8.0/selenium-chrome-driver-4.8.0.jar -P libs
+          wget https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-remote-driver/4.8.0/selenium-remote-driver-4.8.0.jar -P libs
+          wget https://repo1.maven.org/maven2/org/testng/testng/7.9.0/testng-7.9.0.jar -P libs
+
+      - name: Compile Java files
         run: |
           mkdir bin
-          javac -d bin $(find . -name "*.java")
+          javac -cp "libs/*" -d bin $(find . -name "*.java")
+
+      - name: Run TestNG
+        run: |
+          java -cp "bin:libs/*" org.testng.TestNG src/test/java/testng/testng.xml
+
 
       - name: Lancer les tests TestNG
         run: |
