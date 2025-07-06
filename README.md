@@ -1,40 +1,53 @@
-# UI_Automation
+# 🧪 UI Automation with Selenium & TestNG
 
-This project showcases sample UI automation tests using **Java** and **Selenium WebDriver**, focused on essential user interactions such as **drag-and-drop** and **screenshot capture**.
+This project contains automated UI test scripts written in **Java**, using **Selenium WebDriver** and **TestNG**.
 
-## 🔧 Tech Stack
+---
 
-- Java 17+
+## 📂 Project Structure
+
+UI_Automation/
+├── src/
+│ └── test/
+│ └── java/
+│ └── testng/
+│ └── LoginTest.java
+├── testng.xml
+└── README.md
+
+---
+
+## 🚀 How to Run the Tests
+
+1. Open the project in **Eclipse** or any Java IDE.
+2. Make sure **Selenium** and **TestNG** are added to your classpath.
+3. Right-click on `testng.xml` → **Run as TestNG Suite**.
+
+> You can also run individual tests by right-clicking on a test class and selecting "Run as TestNG Test".
+
+---
+
+## 🛠️ Technologies Used
+
+- Java
 - Selenium WebDriver
-- TestNG (optional)
-- Eclipse or IntelliJ IDEA
-- Git & GitHub
+- TestNG
+- Eclipse IDE
 
-## 📁 Project Structure
+---
 
-<pre> UI_Automation/ └── src/ └── test/ └── java/ └── tests/ ├── DragAndDropTest.java ├── ScreenshotTest1.java └── ScreenshotTest2.java </pre>
+## 📌 Notes
 
-## 🚀 How to Run
+- You can extend this project with more test cases (login, form submission, search, etc.)
+- Optionally integrate with **WebDriverManager** for automatic driver setup.
+- Future enhancement: add CI support with GitHub Actions.
 
-1. Clone the repo:
-   git clone https://github.com/Ayesha-sys-QA/UI_Automation.git
+---
 
-2. Open in your Java IDE (Eclipse or IntelliJ)
+## 👩‍💻 Author
 
-3. Install Selenium libraries (via Maven or manually)
+[Ayesha-sys-QA](https://github.com/Ayesha-sys-QA)
 
-4. Run the test files individually
-
-## ✅ Features Demonstrated
-
-- HTML5 drag-and-drop simulation
-- Full-page screenshot capturing
-- Element screenshot capturing
-
-## 📌 Author
-
-**Ayesha** — QA Engineer | Manual & Automation Testing  
-🔗 GitHub: https://github.com/Ayesha-sys-QA  
 💼 Open to remote QA roles
 
 
