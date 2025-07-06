@@ -1,0 +1,29 @@
+name: Run TestNG UI Tests
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v3
+
+      - name: Installer Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Compiler le code Java
+        run: |
+          mkdir bin
+          javac -d bin $(find . -name "*.java")
+
+      - name: Lancer les tests TestNG
+        run: |
+          wget https://repo1.maven.org/maven2/org/testng/testng/7.9.0/testng-7.9.0.jar
+          java -cp "bin:testng-7.9.0.jar" org.testng.TestNG src/test/java/testng/testng.xml
